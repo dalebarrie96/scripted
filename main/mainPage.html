@@ -15,6 +15,53 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <div class="container-fluid ps-0 ms-0 bg-light">
+      <div class="row">
+        <h1 class="text-center">Scripted</h1>
+      </div>
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-3 bg-light h-100 d-flex justify-content-center">
+          Sidebar
+        </div>
+        <!-- main content -->
+        <div class="col-9">
+          <div class="rounded bg-body m-4">
+            <div class="p-3">
+              <h2>Configuration</h2>
+
+              <div class="mb-3 row">
+                <label for="typing-delay" class="col-sm-4 col-form-label">Typing Delay</label>
+                <div class="col-sm-8">
+                  <input type="number" class="form-control" id="typing-delay"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded bg-body m-4">
+            <div class="p-3">
+              <h2>Scripts</h2>
+
+              <div class="mb-3">
+                <label for="code-snippet" class="form-label">Code Snippet</label>
+                <textarea class="form-control" id="code-snippet" rows="5"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded bg-body m-4">
+            <div class="p-3">
+              <h2>Actions</h2>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button" id="btn-run-script">Run Scripts</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
   <script src="./mainPageRenderer.js"></script>

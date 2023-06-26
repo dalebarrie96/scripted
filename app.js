@@ -1,7 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { version: appVersion } = require("./package.json");
+const { keyboard } = require("@nut-tree/nut-js");
 const env = process.env.NODE_ENV || 'prod';
+
+keyboard.config.autoDelayMs = 500;
   
 // If development environment
 if (env === 'dev') {
@@ -36,3 +39,24 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.handle('getApplicationVersion', () => appVersion);
+
+ipcMain.handle( 'app:changeTypingDelay', (event, newDelay) => {  
+    keyboard.config.autoDelayMs = newDelay;
+});
+
+ipcMain.handle( 'app:runScript', (event, codeToPrint) => {
+    console.log("inside handle")
+    const timer = new BrowserWindow({
+      width: 200,
+      height: 150,
+      alwaysOnTop: true,
+      autoHideMenuBar: true
+    })
+  
+    timer.loadFile('./countdown/countdown.html');
+  
+    timer.on('closed', () => {
+      keyboard.type(codeToPrint);
+    });
+    
+  });

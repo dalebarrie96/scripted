@@ -1,0 +1,30 @@
+{
+  "name": "scripted",
+  "version": "0.0.1",
+  "description": "Desktop application to allow developers to script coding sessions for higher quality screen recordings",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalebarrie96/scripted.git"
+  },
+  "keywords": [
+    "coding",
+    "autoTyper",
+    "screen",
+    "recordings"
+  ],
+  "author": "dbarrie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalebarrie96/scripted/issues"
+  },
+  "homepage": "https://github.com/dalebarrie96/scripted#readme",
+  "devDependencies": {
+    "electron": "^25.2.0"
+  }
+}

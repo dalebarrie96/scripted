@@ -1,6 +1,17 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { version: appVersion } = require("./package.json");
+const env = process.env.NODE_ENV || 'prod';
+  
+// If development environment
+if (env === 'dev') {
+    try {
+        require('electron-reloader')(module, {
+            debug: true,
+            watchRenderer: true
+        });
+    } catch (_) { console.log('Error'); }    
+}
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -9,7 +20,7 @@ app.whenReady().then(() => {
     },
     width: 800,
     height: 600,
-    icon: path.join(__dirname, 'img', '/Scripted-Logo.png')
+    icon: path.join(__dirname, 'src', 'img', '/Scripted-Logo.png')
   });
   win.loadFile(path.join(__dirname, 'main', 'mainPage.html'));
 

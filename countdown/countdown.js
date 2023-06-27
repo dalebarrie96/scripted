@@ -1,13 +1,13 @@
-var countdownElement = document.getElementById("countdown");
+const countdownElement = document.getElementById('countdown')
 
-var timeleft = countdownElement.innerHTML;
+let timeleft = countdownElement.innerHTML
 
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    window.close();
+const downloadTimer = setInterval(function () {
+  if (timeleft <= 0) {
+    clearInterval(downloadTimer)
+    window.close()
   } else {
-    countdownElement.innerHTML = timeleft;
+    countdownElement.innerHTML = timeleft
   }
-  timeleft -= 1;
-}, 1000);
+  timeleft -= 1
+}, 1000)

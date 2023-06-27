@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { createWindow } = require('./wrappers/ScriptedElectronWrapper');
+const { startCountdownProcess } = require('./application/countdownSequence');
 const path = require('path');
 const { version: appVersion } = require("./package.json");
 const { keyboard } = require("@nut-tree/nut-js");
@@ -39,18 +40,8 @@ ipcMain.handle('app:changeTypingDelay', (event, newDelay) => {
   keyboard.config.autoDelayMs = newDelay;
 });
 
-ipcMain.handle('app:runScript', (event, codeToPrint) => {
-  const timer = new BrowserWindow({
-    width: 200,
-    height: 150,
-    alwaysOnTop: true,
-    autoHideMenuBar: true
-  })
-
-  timer.loadFile('./countdown/countdown.html');
-
-  timer.on('closed', () => {
+ipcMain.handle('app:runScript', async (event, codeToPrint) => {
+  startCountdownProcess().then( () => {
     keyboard.type(codeToPrint);
   });
-
 });

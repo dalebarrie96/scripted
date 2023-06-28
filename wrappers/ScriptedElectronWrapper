@@ -1,0 +1,31 @@
+const { BrowserWindow } = require('electron')
+
+const DEFAULT_SCRIPTED_LOGO = './src/img/Scripted-Logo.png'
+const DEFAULT_WINDOW_WIDTH = 800
+const DEFAULT_WINDOW_HEIGHT = 600
+
+const createWindow = async (
+  gui,
+  preload,
+  icon = DEFAULT_SCRIPTED_LOGO,
+  width = DEFAULT_WINDOW_WIDTH,
+  height = DEFAULT_WINDOW_HEIGHT) => {
+  const win = new BrowserWindow({
+    webPreferences: {
+      preload
+    },
+    width,
+    height,
+    icon
+  })
+  win.loadFile(gui)
+
+  return win
+}
+
+module.exports = {
+  createWindow,
+  DEFAULT_SCRIPTED_LOGO,
+  DEFAULT_WINDOW_WIDTH,
+  DEFAULT_WINDOW_HEIGHT
+}
